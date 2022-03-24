@@ -1,0 +1,7 @@
+<h1>Item Shops</h1>
+<% @item_shops.each do |shops| %>
+  <h3><%= shops.name %></h3>
+  <p>City: <%= shops.city %></p>
+  <p>Open: <%= shops.open %></p>
+  <p>Employees: <%= shops.num_employees %></p>
+<% end %>
