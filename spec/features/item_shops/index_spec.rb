@@ -56,8 +56,9 @@ RSpec.describe 'the item shops show page' do
   end
 
   it 'displays an item shop' do
-    visit '/item_shops/#index'
+    visit '/item_shops'
     save_and_open_page
-    expect(page).to have_content(@groggy.name)
+    expect(page).to have_content(@grogg)
+    expect(page).to have_content(@perisophia)
   end
 end
