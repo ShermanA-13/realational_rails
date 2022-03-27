@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :quantity
       t.float :price
-      t.boolean :consumable
+      t.boolean :consumable, null: false, default: false
 
       t.timestamps
     end

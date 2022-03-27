@@ -3,5 +3,5 @@ class ItemShop < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :city
-  validates_presence_of :open, in: [true, false]
+  validates_inclusion_of :open, in: [true, false]
 end
