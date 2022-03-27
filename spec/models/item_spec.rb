@@ -10,6 +10,6 @@ RSpec.describe Item, type: :model do
     it { should validate_presence_of :quantity }
     it { should validate_presence_of :price }
     it { should allow_value([true, false]).for(:consumable) }
-    it { should allow_value(nil).for(:consumable) }
+    it { should_not allow_value(nil).for(:consumable) }
   end
 end
