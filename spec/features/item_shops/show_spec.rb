@@ -19,10 +19,20 @@ RSpec.describe 'ItemShops show page' do
   it 'displays specific ItemShop data' do
     visit "/item_shops/#{@groggy.id}"
 
-    save_and_open_page
     expect(page).to have_content(@groggy.name)
     expect(page).to have_content(@groggy.city)
     expect(page).to have_content(@groggy.open)
     expect(page).to have_content(@groggy.num_employees)
+  end
+
+  it 'displays specific ItemShop data' do
+    visit "/item_shops/#{@perisophia.id}"
+
+    # save_and_open_page
+    expect(page).to have_content(@perisophia.name)
+    expect(page).to have_content(@perisophia.city)
+    expect(page).to have_content(@perisophia.open)
+    expect(page).to have_content(@perisophia.num_employees)
+    expect(page).to_not have_content(@groggy.name)
   end
 end
