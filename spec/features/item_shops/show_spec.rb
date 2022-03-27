@@ -20,9 +20,9 @@ RSpec.describe 'ItemShops show page' do
     visit "/item_shops/#{@groggy.id}"
 
     save_and_open_page
-    expect(page).to have_content(groggy.name)
-    expect(page).to have_content(groggy.city)
-    expect(page).to have_content(groggy.open)
-    expect(page).to have_content(groggy.num_employees)
+    expect(page).to have_content(@groggy.name)
+    expect(page).to have_content(@groggy.city)
+    expect(page).to have_content(@groggy.open)
+    expect(page).to have_content(@groggy.num_employees)
   end
 end
