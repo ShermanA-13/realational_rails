@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'the item #index page' do
   before :each do
     @groggy = ItemShop.create!(
@@ -54,14 +52,13 @@ RSpec.describe 'the item #index page' do
     )
   end
 
-  it 'displays items' do
-    visit '/items/#index'
-    # save_and_open_page
+  it 'displays specific Item data related to primary key' do
+    visit "/items/#{@stick.id}"
+
     expect(page).to have_content(@item.name)
-    expect(page).to have_content(@item2.name)
-    expect(page).to have_content(@item3.name)
-    expect(page).to have_content(@item4.name)
-    expect(page).to have_content(@item5.name)
-    expect(page).to have_content(@item6.name)
+    expect(page).to have_content(@item.quantity)
+    expect(page).to have_content(@item.price)
+    expect(page).to have_content(@item.consumable)
+    expect(page).to_not have_content(@item2)
   end
 end
