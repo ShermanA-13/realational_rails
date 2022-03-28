@@ -67,7 +67,7 @@ RSpec.describe 'ItemShops #show page' do
   it 'displays perisophia ItemShop data' do
     visit "/item_shops/#{@perisophia.id}"
 
-    # save_and_open_page
+    save_and_open_page
     expect(page).to have_content(@perisophia.name)
     expect(page).to have_content(@perisophia.city)
     expect(page).to have_content(@perisophia.open)
