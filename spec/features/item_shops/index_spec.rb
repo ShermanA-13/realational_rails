@@ -29,9 +29,16 @@ RSpec.describe 'item shops #index page' do
     end
 
     it 'displays created_at next to each object in readable format' do
-      save_and_open_page
+      # save_and_open_page
       expect(page).to have_content(@groggy.date_time)
       expect(page).to have_content(@perisophia.date_time)
+    end
+
+    it 'page has clickable link that redirects to item_shops#index' do
+      click_link 'Item Shops'
+
+      expect(page).to have_link('Item Shops', href: '/item_shops')
+      expect(page).to have_current_path('/items_shops')
     end
   end
 end

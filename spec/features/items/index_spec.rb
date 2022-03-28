@@ -64,4 +64,11 @@ RSpec.describe 'the item #index page' do
     expect(page).to have_content(@item5.name)
     expect(page).to have_content(@item6.name)
   end
+
+  it 'page has clickable link that redirects to item_shops#index' do
+    click_link 'Item Shops'
+
+    expect(page).to have_link('Item Shops', href: '/item_shops')
+    expect(page).to have_current_path('/items_shops')
+  end
 end

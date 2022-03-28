@@ -67,12 +67,18 @@ RSpec.describe 'ItemShops #show page' do
   it 'displays perisophia ItemShop data' do
     visit "/item_shops/#{@perisophia.id}"
 
-    save_and_open_page
     expect(page).to have_content(@perisophia.name)
     expect(page).to have_content(@perisophia.city)
     expect(page).to have_content(@perisophia.open)
     expect(page).to have_content(@perisophia.num_employees)
     expect(page).to have_content("Number of Items: #{@perisophia.count_items}")
     expect(page).to_not have_content(@groggy.name)
+  end
+
+  it 'page has clickable link that redirects to item_shops#index' do
+    click_link 'Item Shops'
+
+    expect(page).to have_link('Item Shops', href: '/item_shops')
+    expect(page).to have_current_path('/items_shops')
   end
 end
