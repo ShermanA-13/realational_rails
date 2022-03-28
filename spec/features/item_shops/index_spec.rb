@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the item shops show page' do
+RSpec.describe 'item shops #index page' do
   before :each do
     @groggy = ItemShop.create!(
       name: "Groggy's Potions and Knick Knacks",
@@ -14,12 +14,18 @@ RSpec.describe 'the item shops show page' do
       open: false,
       num_employees: 5
     )
+
+    visit '/item_shops'
   end
 
-  it 'displays an item shop' do
-    visit '/item_shops'
-    # save_and_open_page
-    expect(page).to have_content(@groggy.name)
-    expect(page).to have_content(@perisophia.name)
+  describe "when I visit 'item_shop#index'" do
+    it 'displays an item shop' do
+      expect(page).to have_content(@groggy.name)
+      expect(page).to have_content(@perisophia.name)
+    end
+
+    it 'item_shops are ordered by recently created' do
+      expect(@perisophia.name).to appear_before(@groggy.name)
+    end
   end
 end
