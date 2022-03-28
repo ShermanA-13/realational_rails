@@ -12,4 +12,8 @@ class ItemShop < ApplicationRecord
   def date_time
     created_at.strftime(' %I:%M%p on %m/%d/%Y')
   end
+
+  def count_items
+    Item.where(item_shop_id: id).count
+  end
 end
