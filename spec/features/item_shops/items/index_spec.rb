@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the item #index page' do
+RSpec.describe "the '/item_shops/items' #index page" do
   before :each do
     @groggy = ItemShop.create!(
       name: "Groggy's Potions and Knick Knacks",
@@ -55,12 +55,42 @@ RSpec.describe 'the item #index page' do
   end
 
   it 'displays specific Item data related to primary key' do
-    visit "/items/#{@item.id}"
-    # save_and_open_page
+    visit "/item_shops/#{@groggy.id}/items"
+    save_and_open_page
     expect(page).to have_content(@item.name)
     expect(page).to have_content(@item.quantity)
     expect(page).to have_content(@item.price)
     expect(page).to have_content(@item.consumable)
+    expect(page).to have_content(@item2.name)
+    expect(page).to have_content(@item2.quantity)
+    expect(page).to have_content(@item2.price)
+    expect(page).to have_content(@item2.consumable)
+    expect(page).to have_content(@item3.name)
+    expect(page).to have_content(@item3.quantity)
+    expect(page).to have_content(@item3.price)
+    expect(page).to have_content(@item3.consumable)
+    expect(page).to_not have_content(@item4)
+    expect(page).to_not have_content(@item5)
+    expect(page).to_not have_content(@item6)
+  end
+
+  it 'displays specific Item data related to primary key' do
+    visit "/item_shops/#{@perisophia.id}/items"
+    save_and_open_page
+    expect(page).to have_content(@item4.name)
+    expect(page).to have_content(@item4.quantity)
+    expect(page).to have_content(@item4.price)
+    expect(page).to have_content(@item4.consumable)
+    expect(page).to have_content(@item5.name)
+    expect(page).to have_content(@item5.quantity)
+    expect(page).to have_content(@item5.price)
+    expect(page).to have_content(@item5.consumable)
+    expect(page).to have_content(@item6.name)
+    expect(page).to have_content(@item6.quantity)
+    expect(page).to have_content(@item6.price)
+    expect(page).to have_content(@item6.consumable)
+    expect(page).to_not have_content(@item1)
     expect(page).to_not have_content(@item2)
+    expect(page).to_not have_content(@item3)
   end
 end
