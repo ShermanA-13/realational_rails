@@ -27,5 +27,11 @@ RSpec.describe 'item shops #index page' do
     it 'item_shops are ordered by recently created' do
       expect(@perisophia.name).to appear_before(@groggy.name)
     end
+
+    it 'displays created_at next to each object in readable format' do
+      save_and_open_page
+      expect(page).to have_content(@groggy.date_time)
+      expect(page).to have_content(@perisophia.date_time)
+    end
   end
 end
