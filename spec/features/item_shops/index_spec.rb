@@ -33,7 +33,9 @@ RSpec.describe 'item shops #index page' do
       expect(page).to have_content(@groggy.date_time)
       expect(page).to have_content(@perisophia.date_time)
     end
+  end
 
+  describe 'links' do
     it 'page has clickable link that redirects to item_shops#index' do
       click_link 'Item Shops'
       save_and_open_page

@@ -55,56 +55,59 @@ RSpec.describe "the '/item_shops/items' #index page" do
 
     visit "/item_shops/#{@groggy.id}/items"
   end
+  describe "when I visit 'item_shop_items#index'" do
+    it 'displays specific Item data related to ItemShop' do
+      expect(page).to have_content(@item.name)
+      expect(page).to have_content(@item.quantity)
+      expect(page).to have_content(@item.price)
+      expect(page).to have_content(@item.consumable)
+      expect(page).to have_content(@item2.name)
+      expect(page).to have_content(@item2.quantity)
+      expect(page).to have_content(@item2.price)
+      expect(page).to have_content(@item2.consumable)
+      expect(page).to have_content(@item3.name)
+      expect(page).to have_content(@item3.quantity)
+      expect(page).to have_content(@item3.price)
+      expect(page).to have_content(@item3.consumable)
+      expect(page).to_not have_content(@item4)
+      expect(page).to_not have_content(@item5)
+      expect(page).to_not have_content(@item6)
+    end
 
-  it 'displays specific Item data related to ItemShop' do
-    expect(page).to have_content(@item.name)
-    expect(page).to have_content(@item.quantity)
-    expect(page).to have_content(@item.price)
-    expect(page).to have_content(@item.consumable)
-    expect(page).to have_content(@item2.name)
-    expect(page).to have_content(@item2.quantity)
-    expect(page).to have_content(@item2.price)
-    expect(page).to have_content(@item2.consumable)
-    expect(page).to have_content(@item3.name)
-    expect(page).to have_content(@item3.quantity)
-    expect(page).to have_content(@item3.price)
-    expect(page).to have_content(@item3.consumable)
-    expect(page).to_not have_content(@item4)
-    expect(page).to_not have_content(@item5)
-    expect(page).to_not have_content(@item6)
+    it 'displays specific Item data related to ItemShop' do
+      visit "/item_shops/#{@perisophia.id}/items"
+
+      expect(page).to have_content(@item4.name)
+      expect(page).to have_content(@item4.quantity)
+      expect(page).to have_content(@item4.price)
+      expect(page).to have_content(@item4.consumable)
+      expect(page).to have_content(@item5.name)
+      expect(page).to have_content(@item5.quantity)
+      expect(page).to have_content(@item5.price)
+      expect(page).to have_content(@item5.consumable)
+      expect(page).to have_content(@item6.name)
+      expect(page).to have_content(@item6.quantity)
+      expect(page).to have_content(@item6.price)
+      expect(page).to have_content(@item6.consumable)
+      expect(page).to_not have_content(@item)
+      expect(page).to_not have_content(@item2)
+      expect(page).to_not have_content(@item3)
+    end
   end
 
-  it 'displays specific Item data related to ItemShop' do
-    visit "/item_shops/#{@perisophia.id}/items"
+  describe 'links' do
+    it 'page has clickable link that redirects to item_shops#index' do
+      click_link 'Item Shops'
 
-    expect(page).to have_content(@item4.name)
-    expect(page).to have_content(@item4.quantity)
-    expect(page).to have_content(@item4.price)
-    expect(page).to have_content(@item4.consumable)
-    expect(page).to have_content(@item5.name)
-    expect(page).to have_content(@item5.quantity)
-    expect(page).to have_content(@item5.price)
-    expect(page).to have_content(@item5.consumable)
-    expect(page).to have_content(@item6.name)
-    expect(page).to have_content(@item6.quantity)
-    expect(page).to have_content(@item6.price)
-    expect(page).to have_content(@item6.consumable)
-    expect(page).to_not have_content(@item)
-    expect(page).to_not have_content(@item2)
-    expect(page).to_not have_content(@item3)
-  end
+      expect(page).to have_link('Item Shops', href: '/item_shops')
+      expect(page).to have_current_path('/item_shops')
+    end
 
-  it 'page has clickable link that redirects to item_shops#index' do
-    click_link 'Item Shops'
+    it 'page has clickable link that redirects to item#index' do
+      click_link 'Items'
 
-    expect(page).to have_link('Item Shops', href: '/item_shops')
-    expect(page).to have_current_path('/item_shops')
-  end
-
-  it 'page has clickable link that redirects to item#index' do
-    click_link 'Items'
-
-    expect(page).to have_link('Items', href: '/items')
-    expect(page).to have_current_path('/items')
+      expect(page).to have_link('Items', href: '/items')
+      expect(page).to have_current_path('/items')
+    end
   end
 end

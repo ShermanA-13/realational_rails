@@ -55,27 +55,31 @@ RSpec.describe 'the item #index page' do
     visit '/items/#index'
   end
 
-  it 'displays items' do
-    # save_and_open_page
-    expect(page).to have_content(@item.name)
-    expect(page).to have_content(@item2.name)
-    expect(page).to have_content(@item3.name)
-    expect(page).to have_content(@item4.name)
-    expect(page).to have_content(@item5.name)
-    expect(page).to have_content(@item6.name)
+  describe "when I visit 'items#index'" do
+    it 'displays items' do
+      # save_and_open_page
+      expect(page).to have_content(@item.name)
+      expect(page).to have_content(@item2.name)
+      expect(page).to have_content(@item3.name)
+      expect(page).to have_content(@item4.name)
+      expect(page).to have_content(@item5.name)
+      expect(page).to have_content(@item6.name)
+    end
   end
 
-  it 'page has clickable link that redirects to item_shops#index' do
-    click_link 'Item Shops'
+  describe 'links' do
+    it 'page has clickable link that redirects to item_shops#index' do
+      click_link 'Item Shops'
 
-    expect(page).to have_link('Item Shops', href: '/item_shops')
-    expect(page).to have_current_path('/item_shops')
-  end
+      expect(page).to have_link('Item Shops', href: '/item_shops')
+      expect(page).to have_current_path('/item_shops')
+    end
 
-  it 'page has clickable link that redirects to item#index' do
-    click_link 'Items'
+    it 'page has clickable link that redirects to item#index' do
+      click_link 'Items'
 
-    expect(page).to have_link('Items', href: '/items')
-    expect(page).to have_current_path('/items')
+      expect(page).to have_link('Items', href: '/items')
+      expect(page).to have_current_path('/items')
+    end
   end
 end
