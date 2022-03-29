@@ -16,7 +16,7 @@ describe 'ItemShop creation' do
     fill_in('Open', with: true)
     fill_in('Number of Employees', with: '12')
     click_button('Create Item Shop')
-    save_and_open_page
+
     expect(current_path).to eq('/item_shops')
     expect(page).to have_content("Boomba's Brews")
   end
