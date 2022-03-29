@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'item_shops/:item_shop_id/items', to: 'item_shop_items#index'
   post '/item_shops', to: 'item_shops#create'
   get '/item_shops/:id/edit', to: 'item_shops#edit'
+  patch '/item_shops/:id', to: 'item_shops#update'
 end
