@@ -15,6 +15,10 @@ class ItemShopsController < ApplicationController
     redirect_to '/item_shops'
   end
 
+  def edit
+    @item_shop = ItemShop.find(params[:id])
+  end
+
   private
 
   def item_shop_params
