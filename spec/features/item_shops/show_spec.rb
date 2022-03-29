@@ -51,11 +51,11 @@ RSpec.describe 'ItemShops #show page' do
       price: 1205.35,
       consumable: false
     )
+
+    visit "/item_shops/#{@groggy.id}"
   end
 
   it 'displays groggy ItemShop data' do
-    visit "/item_shops/#{@groggy.id}"
-
     expect(page).to have_content(@groggy.name)
     expect(page).to have_content(@groggy.city)
     expect(page).to have_content(@groggy.open)
@@ -76,8 +76,6 @@ RSpec.describe 'ItemShops #show page' do
   end
 
   it 'page has clickable link that redirects to item_shops#index' do
-    visit "/item_shops/#{@groggy.id}"
-
     click_link 'Item Shops'
 
     expect(page).to have_link('Item Shops', href: '/item_shops')
