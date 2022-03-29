@@ -109,5 +109,9 @@ RSpec.describe "the '/item_shops/items' #index page" do
       expect(page).to have_link('Items', href: '/items')
       expect(page).to have_current_path('/items')
     end
+
+    it 'has a link to create a new item' do
+      expect(page).to have_link('Create Item')
+    end
   end
 end
