@@ -69,6 +69,6 @@ RSpec.describe 'the item #index page' do
     click_link 'Item Shops'
 
     expect(page).to have_link('Item Shops', href: '/item_shops')
-    expect(page).to have_current_path('/items_shops')
+    expect(page).to have_current_path('/item_shops')
   end
 end
