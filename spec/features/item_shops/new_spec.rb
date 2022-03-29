@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'ItemShop creation' do
-  it 'links to new page from city index' do
+  it 'links to new page from item_shop#index' do
     visit '/item_shops'
 
     click_link 'New Item Shop'
