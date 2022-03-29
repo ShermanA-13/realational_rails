@@ -38,7 +38,7 @@ RSpec.describe 'item shops #index page' do
   describe 'links' do
     it 'page has clickable link that redirects to item_shops#index' do
       click_link 'Item Shops'
-      save_and_open_page
+
       expect(page).to have_link('Item Shops', href: '/item_shops')
       expect(page).to have_current_path('/item_shops')
     end
