@@ -1,14 +1,6 @@
 require 'rails_helper'
 
 describe 'ItemShop creation' do
-  before :each do
-    @groggy = ItemShop.create!(
-      name: "Groggy's Potions and Knick Knacks",
-      city: 'Akros',
-      open: true,
-      num_employees: 3
-    )
-  end
   it 'links to new page from item_shop#index' do
     visit '/item_shops'
 
