@@ -15,10 +15,6 @@ class ItemShopsController < ApplicationController
     redirect_to '/item_shops'
   end
 
-  def edit
-    @city = ItemShop.find(params[:id])
-  end
-
   private
 
   def item_shop_params
