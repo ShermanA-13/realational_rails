@@ -1,4 +1,9 @@
+<ul>
+  <a href ="/item_shops">Item Shops</a>
+  <a href ="/items">Items</a>
+</ul>
 <h1>Item Shops</h1>
-<% @item_shops.each do |shops| %>
-  <p><%= shops.name %></p>
+<% @item_shops.recent_order.each do |shops| %>
+  <p><h3><%= shops.name %></h3>
+  Created At:<%= shops.date_time %></p>
 <% end %>

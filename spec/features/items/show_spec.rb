@@ -1,19 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe 'ItemShops #show page' do
+RSpec.describe 'the item #index page' do
   before :each do
     @groggy = ItemShop.create!(
       name: "Groggy's Potions and Knick Knacks",
       city: 'Akros',
-      open: true,
+      open: 'true',
       num_employees: 3
     )
     @perisophia = ItemShop.create!(
       name: "Perisophia's Scrolls",
       city: 'Meletis',
-      open: false,
+      open: 'false',
       num_employees: 5
     )
+
     @item = @groggy.items.create!(
       name: 'Stick',
       quantity: 26,
@@ -51,28 +52,16 @@ RSpec.describe 'ItemShops #show page' do
       price: 1205.35,
       consumable: false
     )
-
-    visit "/item_shops/#{@groggy.id}"
+    visit "/items/#{@item.id}"
   end
+
   describe "when I visit 'item_shop#show'" do
-    it 'displays groggy ItemShop data' do
-      expect(page).to have_content(@groggy.name)
-      expect(page).to have_content(@groggy.city)
-      expect(page).to have_content(@groggy.open)
-      expect(page).to have_content(@groggy.num_employees)
-      expect(page).to have_content("Number of Items: #{@groggy.count_items}")
-      expect(page).to_not have_content(@perisophia.name)
-    end
-
-    it 'displays perisophia ItemShop data' do
-      visit "/item_shops/#{@perisophia.id}"
-
-      expect(page).to have_content(@perisophia.name)
-      expect(page).to have_content(@perisophia.city)
-      expect(page).to have_content(@perisophia.open)
-      expect(page).to have_content(@perisophia.num_employees)
-      expect(page).to have_content("Number of Items: #{@perisophia.count_items}")
-      expect(page).to_not have_content(@groggy.name)
+    it 'displays specific Item data related to primary key' do
+      expect(page).to have_content(@item.name)
+      expect(page).to have_content(@item.quantity)
+      expect(page).to have_content(@item.price)
+      expect(page).to have_content(@item.consumable)
+      expect(page).to_not have_content(@item2)
     end
   end
 
@@ -82,13 +71,6 @@ RSpec.describe 'ItemShops #show page' do
 
       expect(page).to have_link('Item Shops', href: '/item_shops')
       expect(page).to have_current_path('/item_shops')
-    end
-
-    it 'page has clickable link that redirects to item#index' do
-      click_link 'Items'
-
-      expect(page).to have_link('Items', href: '/items')
-      expect(page).to have_current_path('/items')
     end
 
     it 'page has clickable link that redirects to item#index' do

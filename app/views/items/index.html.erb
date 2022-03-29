@@ -1,0 +1,11 @@
+<ul>
+  <a href ="/item_shops">Item Shops</a>
+  <a href ="/items">Items</a>
+</ul>
+<h1>Items for Sale</h1>
+<% @items.each do |item| %>
+  <h3><p><%= item.name %></p></h3>
+  <p>Quantity: <%= item.quantity %></p>
+  <p>Price (GP): <%= item.price %></p>
+  <p>Consumable: <%= item.consumable %></p>
+<% end %>
