@@ -52,11 +52,10 @@ RSpec.describe 'the item #index page' do
       price: 1205.35,
       consumable: false
     )
+    visit "/items/#{@item.id}"
   end
 
   it 'displays specific Item data related to primary key' do
-    visit "/items/#{@item.id}"
-    # save_and_open_page
     expect(page).to have_content(@item.name)
     expect(page).to have_content(@item.quantity)
     expect(page).to have_content(@item.price)

@@ -52,12 +52,11 @@ RSpec.describe "the '/item_shops/items' #index page" do
       price: 1205.35,
       consumable: false
     )
+
+    visit "/item_shops/#{@groggy.id}/items"
   end
 
   it 'displays specific Item data related to ItemShop' do
-    visit "/item_shops/#{@groggy.id}/items"
-    # save_and_open_page
-
     expect(page).to have_content(@item.name)
     expect(page).to have_content(@item.quantity)
     expect(page).to have_content(@item.price)
@@ -77,7 +76,6 @@ RSpec.describe "the '/item_shops/items' #index page" do
 
   it 'displays specific Item data related to ItemShop' do
     visit "/item_shops/#{@perisophia.id}/items"
-    # save_and_open_page
 
     expect(page).to have_content(@item4.name)
     expect(page).to have_content(@item4.quantity)

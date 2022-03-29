@@ -52,10 +52,10 @@ RSpec.describe 'the item #index page' do
       price: 1205.35,
       consumable: false
     )
+    visit '/items/#index'
   end
 
   it 'displays items' do
-    visit '/items/#index'
     # save_and_open_page
     expect(page).to have_content(@item.name)
     expect(page).to have_content(@item2.name)
