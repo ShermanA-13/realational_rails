@@ -1,7 +1,8 @@
 <ul>
   <a href ="/item_shops">Item Shops</a>
-  <a href ="/items">Items</a>
+  <a href ="/items">Items List</a>
 </ul>
+<%= link_to "Create Item", "/items/new" %>
 <h1>Items for Sale</h1>
 <% @items.each do |item| %>
   <h3><p><%= item.name %></p></h3>

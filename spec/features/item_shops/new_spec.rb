@@ -11,7 +11,7 @@ describe 'ItemShop creation' do
   it 'can create a new artist' do
     visit '/item_shops/new'
 
-    fill_in('Name', with: "Boomba's Brews")
+    fill_in 'Name', with: "Boomba's Brews"
     fill_in('City', with: 'Akros')
     fill_in('Open', with: true)
     fill_in('Number of Employees', with: '12')
