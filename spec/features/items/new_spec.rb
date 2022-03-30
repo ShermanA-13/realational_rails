@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the item #index page' do
+RSpec.describe 'items#new page' do
   before :each do
     @groggy = ItemShop.create!(
       name: "Groggy's Potions and Knick Knacks",
@@ -52,32 +52,30 @@ RSpec.describe 'the item #index page' do
       price: 1205.35,
       consumable: false
     )
-    visit "/items/#{@item.id}"
+
+    visit "/item_shops/#{@groggy.id}/items"
   end
 
-  describe "when I visit 'item_shop#show'" do
-    it 'displays specific Item data related to primary key' do
-      expect(page).to have_content(@item.name)
-      expect(page).to have_content(@item.quantity)
-      expect(page).to have_content(@item.price)
-      expect(page).to have_content(@item.consumable)
-      expect(page).to_not have_content(@item2)
-    end
+  it 'has a link to create a new item' do
+    expect(page).to have_link('New Item')
   end
 
-  describe 'links' do
-    it 'page has clickable link that redirects to item_shops#index' do
-      click_link 'Item Shops'
+  it 'links to item_shop/#{item_shop.id}/item#new' do
+    click_link 'New Item'
 
-      expect(page).to have_link('Item Shops', href: '/item_shops')
-      expect(page).to have_current_path('/item_shops')
-    end
+    expect(current_path).to eq("/item_shops/#{@groggy.id}/items/new")
+  end
 
-    it 'page has clickable link that redirects to item#index' do
-      click_link 'Items List'
+  it 'can create a new item shop' do
+    click_link 'New Item'
 
-      expect(page).to have_link('Items', href: '/items')
-      expect(page).to have_current_path('/items')
-    end
+    fill_in('Name', with: 'Ale')
+    fill_in('Quantity', with: '99')
+    fill_in('Price', with: '00.01')
+    fill_in('Consumable', with: 'true')
+    click_button('Generate')
+
+    expect(current_path).to eq("/item_shops/#{@groggy.id}/items")
+    expect(page).to have_content('Ale')
   end
 end

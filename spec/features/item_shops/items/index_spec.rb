@@ -109,28 +109,5 @@ RSpec.describe "the '/item_shops/items' #index page" do
       expect(page).to have_link('Items', href: '/items')
       expect(page).to have_current_path('/items')
     end
-
-    it 'has a link to create a new item' do
-      expect(page).to have_link('Create Item')
-    end
-
-    it 'links to item_shop/#{item_shop.id}/item#new' do
-      click_link 'Create Item'
-
-      expect(current_path).to eq('/items/new')
-    end
-
-    it 'can create a new item shop' do
-      visit '/items/new'
-      fill_in('Name', with: 'Ale')
-      fill_in('Quantity', with: '99')
-      fill_in('Price', with: '00.01')
-      fill_in('Consumable', with: 'true')
-      fill_in('Item Shop', with: @groggy.id.to_s)
-      click_button('Generate')
-
-      expect(current_path).to eq('/items')
-      expect(page).to have_content('Ale')
-    end
   end
 end
