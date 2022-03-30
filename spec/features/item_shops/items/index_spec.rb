@@ -117,7 +117,7 @@ RSpec.describe "the '/item_shops/items' #index page" do
     it 'links to item_shop/#{item_shop.id}/item#new' do
       click_link 'Create Item'
 
-      expect(current_path).to eq("item_shop/#{@item_shop.id}/items/new")
+      expect(current_path).to eq('/items/new')
     end
   end
 end
