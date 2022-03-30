@@ -79,5 +79,9 @@ RSpec.describe 'the item #index page' do
       expect(page).to have_link('Items', href: '/items')
       expect(page).to have_current_path('/items')
     end
+
+    it 'page has link to Update Item' do
+      expect(page).to have_link('Update Item')
+    end
   end
 end
