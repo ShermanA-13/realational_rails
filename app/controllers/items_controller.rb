@@ -7,15 +7,24 @@ class ItemsController < ApplicationController
     @items = Item.find(params[:id])
   end
 
+  def new
+    @item_shop = ItemShop.find(params[:id])
+  end
+
   def create
-    item = Item.create!(item_params)
+    @item_shop = ItemShop.find(params[:id])
+    item = @item_shop.items.create!(item_params)
     item.save
-    redirect_to '/items'
+    redirect_to "/item_shops/#{@item_shop.id}/items"
+  end
+
+  def edit
+    @item = Item.find(params[:id])
   end
 
   private
 
   def item_params
-    params.permit(:name, :quantity, :price, :consumable, :item_shop_id)
+    params.permit(:name, :quantity, :price, :consumable)
   end
 end
