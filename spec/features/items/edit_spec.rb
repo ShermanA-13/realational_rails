@@ -29,11 +29,24 @@ RSpec.describe 'item#edit page' do
     )
   end
 
-  it 'links to the edit page' do\
+  it 'links to the edit page' do
     visit "/items/#{@item1.id}"
 
     click_link 'Update Item'
 
     expect(current_path).to eq("/items/#{@item1.id}/edit")
+  end
+
+  it 'can edit the item_shop.id' do
+    visit "/items/#{@item1.id}/edit"
+
+    fill_in('Name', with: 'Booze')
+    fill_in('Quantity', with: '12')
+    fill_in('Price', with: '00.02')
+    fill_in('Consumable', with: 'true')
+    click_button('Update Item')
+
+    expect(current_path).to eq("/items/#{@item1.id}")
+    expect(page).to have_content('Booze')
   end
 end
