@@ -91,10 +91,11 @@ RSpec.describe 'ItemShops #show page' do
       expect(page).to have_current_path('/items')
     end
 
-    it 'has a link that redirects to item_shop items' do
-      click_on "#{@groggy.name} Items"
+    it 'has link that takes redirects to #{item_shop}/items' do
+      expect(page).to have_link("#{@groggy.name} Items")
 
-      expect(page).to have_link("#{@groggy.name}'s Items", href: "/item_shops/#{@item_shop.id}/items")
+      click_link("#{@groggy.name} Items")
+
       expect(page).to have_current_path("/item_shops/#{@groggy.id}/items")
     end
   end
