@@ -1,14 +1,14 @@
 <ul>
   <a href ="/item_shops">Item Shops</a>
   <a href ="/items">Items List</a>
-  <a href ="/item_shops/#{@item_shop.id}/items">Items</a><%=@item_shop.name %> Items</a>
+  <a href="/item_shops/<%= @item_shop.id %>/items"><%= @item_shop.name %> Items</a>
 </ul>
 <h3>
 Item Shop: <%= @item_shop.name %>
-  <%= button_to "Update #{@item_shop.name}",
-  "/item_shops/#{@item_shop.id}/edit", method: :get %>
 </h3>
 <h4>City: <%= @item_shop.city %></h4>
 <h4>Store Status: <%= @item_shop.open %></h4>
 <h4>Number of Employees: <%= @item_shop.num_employees %></h4>
 <p>Number of Items: <%= @item_shop.count_items%></p>
+<%= button_to "Update #{@item_shop.name}",
+  "/item_shops/#{@item_shop.id}/edit", method: :get %>
