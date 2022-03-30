@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the item #index page' do
+RSpec.describe 'item#edit page' do
   before :each do
     @groggy = ItemShop.create!(
       name: "Groggy's Potions and Knick Knacks",
@@ -9,7 +9,7 @@ RSpec.describe 'the item #index page' do
       num_employees: 3
     )
 
-    @item = @groggy.items.create!(
+    @item1 = @groggy.items.create!(
       name: 'Stick',
       quantity: 26,
       price: 0.02,
@@ -27,11 +27,13 @@ RSpec.describe 'the item #index page' do
       price: 100.23,
       consumable: true
     )
-
-    visit "/items/#{@item.id}"
   end
 
-  it 'page has link to Update Item' do
-    expect(page).to have_button('Update Item')
+  it 'links to the edit page' do\
+    visit "/items/#{@item1.id}"
+
+    click_link 'Update Item'
+
+    expect(current_path).to eq("/items/#{@item1.id}/edit")
   end
 end
