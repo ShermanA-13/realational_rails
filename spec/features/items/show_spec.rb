@@ -15,7 +15,7 @@ RSpec.describe 'the item #index page' do
       num_employees: 5
     )
 
-    @item = @groggy.items.create!(
+    @item1 = @groggy.items.create!(
       name: 'Stick',
       quantity: 26,
       price: 0.02,
@@ -52,15 +52,15 @@ RSpec.describe 'the item #index page' do
       price: 1205.35,
       consumable: false
     )
-    visit "/items/#{@item.id}"
+    visit "/items/#{@item1.id}"
   end
 
   describe "when I visit 'item_shop#show'" do
     it 'displays specific Item data related to primary key' do
-      expect(page).to have_content(@item.name)
-      expect(page).to have_content(@item.quantity)
-      expect(page).to have_content(@item.price)
-      expect(page).to have_content(@item.consumable)
+      expect(page).to have_content(@item1.name)
+      expect(page).to have_content(@item1.quantity)
+      expect(page).to have_content(@item1.price)
+      expect(page).to have_content(@item1.consumable)
       expect(page).to_not have_content(@item2)
     end
   end

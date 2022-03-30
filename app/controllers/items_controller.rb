@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -16,6 +16,12 @@ class ItemsController < ApplicationController
     item = @item_shop.items.create!(item_params)
     item.save
     redirect_to "/item_shops/#{@item_shop.id}/items"
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to "/items/#{@item.id}"
   end
 
   def edit
