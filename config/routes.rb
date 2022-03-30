@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   patch '/item_shops/:id', to: 'item_shops#update'
 
   get '/items', to: 'items#index'
+  get '/items/new', to: 'items#new'
   get '/items/:id', to: 'items#show'
 end
