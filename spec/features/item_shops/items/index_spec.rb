@@ -127,7 +127,7 @@ RSpec.describe "the '/item_shops/items' #index page" do
       fill_in('Price', with: '00.01')
       fill_in('Consumable', with: 'true')
       fill_in('Item Shop', with: @groggy.id.to_s)
-      click_button('Create Item')
+      click_button('Generate')
 
       expect(current_path).to eq('/items')
       expect(page).to have_content('Ale')
