@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get 'item_shops/:id/items/new', to: 'items#new'
   post 'item_shops/:id/items', to: 'items#create'
   get '/items/:id/edit', to: 'items#edit'
+  patch '/items/:id', to: 'items#update'
 end
