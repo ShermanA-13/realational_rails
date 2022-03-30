@@ -2,8 +2,8 @@
     <a href ="/item_shops">Item Shops</a>
     <a href ="/items">Items List</a>
   </ul>
-  <%= link_to "Update Item", "/items/#{@items.id}/edit" %>
-  <h3><p><%= @items.name %></p></h3>
-  <p>Quantity: <%= @items.quantity %></p>
-  <p>Price (GP): <%= @items.price %></p>
-  <p>Consumable: <%= @items.consumable %></p>
+  <%= link_to "Update Item", "/items/#{@item.id}/edit" %>
+  <h3><p><%= @item.name %></p></h3>
+  <p>Quantity: <%= @item.quantity %></p>
+  <p>Price (GP): <%= @item.price %></p>
+  <p>Consumable: <%= @item.consumable %></p>
