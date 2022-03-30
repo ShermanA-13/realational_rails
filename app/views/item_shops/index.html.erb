@@ -3,8 +3,8 @@
   <<a href ="/items">Items List</a>
 </ul>
 <h1>Item Shops</h1>
+  <%= link_to "New Item Shop", "/item_shops/new" %>
 <% @item_shops.each do |shops| %>
   <p><h3><%= shops.name %></h3>
   Created At:<%= shops.date_time %></p>
 <% end %>
-  <%= link_to "New Item Shop", "/item_shops/new" %>

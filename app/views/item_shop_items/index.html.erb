@@ -4,6 +4,7 @@
 </ul>
 <%= link_to "Create Item", "/items/new" %>
 <h1>Items for Sale</h1>
+<%= link_to "Create Item", "/items/new" %>
 <% @items.each do |item| %>
   <h3><p><%= item.name %></p></h3>
   <p>Quantity: <%= item.quantity %></p>

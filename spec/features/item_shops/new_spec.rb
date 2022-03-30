@@ -8,7 +8,7 @@ describe 'ItemShop creation' do
     expect(current_path).to eq('/item_shops/new')
   end
 
-  it 'can create a new artist' do
+  it 'can create a new item shop' do
     visit '/item_shops/new'
 
     fill_in 'Name', with: "Boomba's Brews"

@@ -1,0 +1,13 @@
+<%= form_with url: '/items', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :quantity %>
+  <%= form.text_field :quantity %>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  <%= form.label :consumable %>
+  <%= form.text_field :consumable %>
+  <%= form.label :item_shop_id, "Item Shop" %>
+  <%= form.text_field :item_shop_id %>
+  <%= form.submit "Create Item" %>
+<% end %>
