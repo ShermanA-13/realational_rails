@@ -8,5 +8,6 @@
   <p>Quantity: <%= item.quantity %></p>
   <p>Price (GP): <%= item.price %></p>
   <p>Consumable: <%= item.consumable %></p>
+  <%= link_to "Edit #{item.name}", "/items/#{item.id}/edit" %>
   <%= link_to "Show #{item.name}", "/items/#{item.id}" %>
 <% end %>
