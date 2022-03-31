@@ -1,10 +1,12 @@
 <ul>
   <a href ="/item_shops">Item Shops</a>
-  <<a href ="/items">Items List</a>
+  <a href ="/items">Items List</a>
 </ul>
 <h1>Item Shops</h1>
   <%= link_to "New Item Shop", "/item_shops/new" %>
-<% @item_shops.each do |shops| %>
-  <p><h3><%= shops.name %></h3>
-  Created At:<%= shops.date_time %></p>
+<% @item_shops.each do |shop| %>
+  <p><h3><%= shop.name %></h3>
+  Created At:<%= shop.date_time %></p>
+  <%= link_to "Edit #{shop.name}", "/item_shops/#{shop.id}/edit" %>
+  <%= link_to "Show #{shop.name}", "/item_shops/#{shop.id}" %>
 <% end %>
