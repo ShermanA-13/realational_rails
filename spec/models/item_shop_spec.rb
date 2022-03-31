@@ -93,5 +93,9 @@ RSpec.describe ItemShop, type: :model do
       expect(@perisophia.count_items).to eq(2)
       expect(@golden.count_items).to eq(3)
     end
+
+    it 'sorts items in Itemshops by #sort.alpha' do
+      expect(@groggy.sort_alpha).to eq([@item3, @item2, @item1])
+    end
   end
 end
