@@ -14,32 +14,32 @@ RSpec.describe Item, type: :model do
   end
 
   it 'only returns consumable items' do
-    @groggy = ItemShop.create!(
+    groggy = ItemShop.create!(
       name: "Groggy's Potions and Knick Knacks",
       city: 'Akros',
       open: 'true',
       num_employees: 3
     )
 
-    @item1 = @groggy.items.create!(
+    item1 = groggy.items.create!(
       name: 'Stick',
       quantity: 26,
       price: 0.02,
       consumable: false
     )
-    @item2 = @groggy.items.create!(
+    item3 = groggy.items.create!(
       name: 'Healing Potion',
       quantity: 12,
       price: 50.50,
       consumable: true
     )
-    @item3 = @groggy.items.create!(
+    item2 = groggy.items.create!(
       name: 'Greater Healing Potion',
       quantity: 12,
       price: 100.23,
       consumable: true
     )
 
-    expect(Item.only_consumables).to eq([@item2, @item3])
+    expect(Item.only_consumables).to eq([item3, item2])
   end
 end
