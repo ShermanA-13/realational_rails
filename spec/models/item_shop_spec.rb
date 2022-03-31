@@ -88,6 +88,11 @@ RSpec.describe ItemShop, type: :model do
       expect(ItemShop.recent_order).to eq([@golden, @perisophia, @groggy])
     end
 
+    it 'displays #created_at in a readable format' do
+      date = Time.now.utc
+      expect(@groggy.date_time).to eq(date.strftime(' %I:%M%p on %m/%d/%Y'))
+    end
+
     it 'counts items in ItemShop' do
       expect(@groggy.count_items).to eq(3)
       expect(@perisophia.count_items).to eq(2)
