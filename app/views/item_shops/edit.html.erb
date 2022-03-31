@@ -1,11 +1,11 @@
 <%= form_with url: "/item_shops/#{@item_shop.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name %></br>
   <%= form.label :city %>
-  <%= form.text_field :city %>
+  <%= form.text_field :city %></br>
   <%= form.label :open %>
-  <%= form.text_field :open %>
+  <%= form.text_field :open %></br>
   <%= form.label :num_employees, "Number of Employees:" %>
-  <%= form.text_field :num_employees %>
+  <%= form.text_field :num_employees %></br>
   <%= form.submit "Update Item Shop" %>
 <% end %>

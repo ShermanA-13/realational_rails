@@ -4,6 +4,7 @@
 </ul>
 <h1>Items for Sale</h1>
 <%= link_to "New Item", "/item_shops/#{@item_shop.id}/items/new" %>
+<%= link_to 'Sort Alphabetically', "/item_shops/#{@item_shop.id}/items?sort=asc" %>
 <% @items.each do |item| %>
   <h3><p><%= item.name %></p></h3>
   <p>Quantity: <%= item.quantity %></p>

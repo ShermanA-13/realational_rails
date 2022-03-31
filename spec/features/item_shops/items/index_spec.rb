@@ -8,24 +8,17 @@ RSpec.describe "the '/item_shops/items' #index page" do
       open: 'true',
       num_employees: 3
     )
-    @perisophia = ItemShop.create!(
-      name: "Perisophia's Scrolls",
-      city: 'Meletis',
-      open: 'false',
-      num_employees: 5
-    )
-
-    @item = @groggy.items.create!(
-      name: 'Stick',
-      quantity: 26,
-      price: 0.02,
-      consumable: false
-    )
     @item2 = @groggy.items.create!(
       name: 'Healing Potion',
       quantity: 12,
       price: 50.50,
       consumable: true
+    )
+    @item1 = @groggy.items.create!(
+      name: 'Stick',
+      quantity: 26,
+      price: 0.02,
+      consumable: false
     )
     @item3 = @groggy.items.create!(
       name: 'Greater Healing Potion',
@@ -34,16 +27,16 @@ RSpec.describe "the '/item_shops/items' #index page" do
       consumable: true
     )
 
+    @perisophia = ItemShop.create!(
+      name: "Perisophia's Scrolls",
+      city: 'Meletis',
+      open: 'false',
+      num_employees: 5
+    )
     @item4 = @perisophia.items.create!(
       name: 'Scroll of Minor Illusion',
       quantity: 6,
       price: 100.50,
-      consumable: true
-    )
-    @item5 = @perisophia.items.create!(
-      name: 'Scroll of Spiritual Weapon',
-      quantity: 12,
-      price: 335.68,
       consumable: true
     )
     @item6 = @perisophia.items.create!(
@@ -52,15 +45,21 @@ RSpec.describe "the '/item_shops/items' #index page" do
       price: 1205.35,
       consumable: false
     )
+    @item5 = @perisophia.items.create!(
+      name: 'Scroll of Spiritual Weapon',
+      quantity: 12,
+      price: 335.68,
+      consumable: true
+    )
 
     visit "/item_shops/#{@groggy.id}/items"
   end
   describe "when I visit 'item_shop_items#index'" do
     it 'displays specific Item data related to ItemShop' do
-      expect(page).to have_content(@item.name)
-      expect(page).to have_content(@item.quantity)
-      expect(page).to have_content(@item.price)
-      expect(page).to have_content(@item.consumable)
+      expect(page).to have_content(@item1.name)
+      expect(page).to have_content(@item1.quantity)
+      expect(page).to have_content(@item1.price)
+      expect(page).to have_content(@item1.consumable)
       expect(page).to have_content(@item2.name)
       expect(page).to have_content(@item2.quantity)
       expect(page).to have_content(@item2.price)
@@ -89,7 +88,7 @@ RSpec.describe "the '/item_shops/items' #index page" do
       expect(page).to have_content(@item6.quantity)
       expect(page).to have_content(@item6.price)
       expect(page).to have_content(@item6.consumable)
-      expect(page).to_not have_content(@item)
+      expect(page).to_not have_content(@item1)
       expect(page).to_not have_content(@item2)
       expect(page).to_not have_content(@item3)
     end
@@ -108,6 +107,14 @@ RSpec.describe "the '/item_shops/items' #index page" do
 
       expect(page).to have_link('Items', href: '/items')
       expect(page).to have_current_path('/items')
+    end
+
+    it 'I see a link to order venue' do
+      expect(page).to have_link('Sort Alphabetically', href: "/item_shops/#{@groggy.id}/items?sort=asc")
+      click_link 'Sort Alphabetically'
+
+      expect(@item3.name).to appear_before(@item1.name)
+      expect(@item2.name).to_not appear_before(@item3.name)
     end
   end
 end

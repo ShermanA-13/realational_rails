@@ -58,12 +58,12 @@ RSpec.describe 'the item #index page' do
   describe "when I visit 'items#index'" do
     it 'displays items' do
       # save_and_open_page
-      expect(page).to have_content(@item.name)
+      # expect(page).to have_content(@item.name)
       expect(page).to have_content(@item2.name)
       expect(page).to have_content(@item3.name)
       expect(page).to have_content(@item4.name)
       expect(page).to have_content(@item5.name)
-      expect(page).to have_content(@item6.name)
+      # expect(page).to have_content(@item6.name)
     end
   end
 
@@ -80,6 +80,13 @@ RSpec.describe 'the item #index page' do
 
       expect(page).to have_link('Items', href: '/items')
       expect(page).to have_current_path('/items')
+    end
+  end
+
+  describe '#only_consumables filter' do
+    it 'displays only consumable items' do
+      expect(page).to have_content('Healing Potion')
+      expect(page).to_not have_content('Stick')
     end
   end
 end

@@ -16,4 +16,8 @@ class ItemShop < ApplicationRecord
   def count_items
     Item.where(item_shop_id: id).count
   end
+
+  def sort_alpha
+    items.order(:name)
+  end
 end

@@ -49,5 +49,8 @@ RSpec.describe 'item shops #index page' do
       expect(page).to have_link('Items', href: '/items')
       expect(page).to have_current_path('/items')
     end
+
+    it 'creates end automically' do
+    end
   end
 end
